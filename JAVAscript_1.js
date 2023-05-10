@@ -1,26 +1,26 @@
-// 画面サイズを取得
-const screenWidth = window.innerWidth;
-const screenHeight = window.innerHeight;
+var test = document.getElementById("test");
 
-// 文字列の幅を取得
-const textWidth = document.querySelector('.moving-text').clientWidth;
+var positionX = 0;
+var positionY = 0;
+var directionX = 1;
+var directionY = 1;
 
-// 文字列の初期位置を設定
-let textPositionX = (screenWidth - textWidth) / 2;
-let textPositionY = screenHeight / 2;
+function animate() {
+  positionX += directionX;
+  positionY += directionY;
 
-// 文字列を移動させる関数
-function moveText() {
-    textPositionX++;
-    if (textPositionX > screenWidth) {
-        textPositionX = -textWidth;
-    }
-    document.querySelector('.moving-text').style.left = textPositionX + 'px';
-    document.querySelector('.moving-text').style.top = textPositionY + 'px';
-    requestAnimationFrame(moveText);
+  if (positionX > window.innerWidth - test.offsetWidth || positionX < 0) {
+    directionX *= -1;
+  }
+
+  if (positionY > window.innerHeight - test.offsetHeight || positionY < 0) {
+    directionY *= -1;
+  }
+
+  test.style.left = positionX + "px";
+  test.style.top = positionY + "px";
+
+  requestAnimationFrame(animate);
 }
 
-// ページが読み込まれたら文字列を移動させる
-window.onload = function() {
-    requestAnimationFrame(moveText);
-}
+animate();

@@ -1,16 +1,9 @@
-body {
-    margin: 0;
-    padding: 0;
-}
-
-.moving-text {
-    font-size: 50px;
-    position: absolute;
-    animation: move 2s infinite;
-}
-
-@keyframes move {
-    0% { left: 0; top: 50%; }
-    50% { left: 50%; top: 50%; }
-    100% { left: 100%; top: 50%; }
+#test {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5em;
+  font-weight: bold;
+  color: #007bff;
 }
